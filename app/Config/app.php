@@ -16,12 +16,9 @@ return [
     'license' => 'MIT',
 
     'autoenqueue' => [
-
         // Enables or disables auto-enqueue of assets
         'enabled'       => true,
-        // Enqueue priority
-        'priority'      => 10,
-        // Assets to auto-enqueue or auto-register
+        // Assets to auto-enqueue
         'assets'        => [
             [
                 'asset'     => 'css/app.css',
@@ -30,11 +27,10 @@ return [
             ],
             [
                 'asset'     => 'js/app.js',
-                'dep'       => [],
+                'dep'       => ['jquery'],
                 'footer'    => true,
             ],
         ],
-
     ],
 
     'localize' => [

@@ -3,7 +3,6 @@
 namespace TransportCalcCDEK;
 
 use WPMVC\Bridge;
-
 /**
  * Main class.
  * Bridge between WordPress and App.
@@ -20,7 +19,10 @@ class Main extends Bridge
      */
     public function init()
     {
+        $this->add_shortcode( 'calculator-cdek', 'view@shortcodes.calculator-cdek' );
     }
+
+
     /**
      * Declaration of admin only WordPress hooks.
      * For WordPress admin dashboard.
