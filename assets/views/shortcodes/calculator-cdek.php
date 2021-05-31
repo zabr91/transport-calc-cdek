@@ -185,7 +185,7 @@
                                     <td></td>
                                     <td><button class="btn btn-success w-100" id="calculatorForIndex-addPlace">Заключить договор</button></td>
                                     <td><button class="btn btn-success w-100" id="calculatorForIndex-addPlace">Заключить договор</button></td>
-                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
