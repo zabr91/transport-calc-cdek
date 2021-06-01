@@ -10,6 +10,7 @@ jQuery(function ($) {
 
             // calculator = document.getElementById('calculator');
             calculatorForIndex = document.getElementById('calculatorForIndex')
+
             calculatorForIndexAddPlace = calculatorForIndex.querySelector('#calculatorForIndex-addPlace')
             calculatorForIndexPlaces = calculatorForIndex.querySelector('#calculatorForIndex-places')
             goods = [];
@@ -34,10 +35,14 @@ jQuery(function ($) {
                 this.calculatorForIndex.addEventListener('submit', async e => {
                     e.preventDefault();
 
-                    console.log('Submit');
-
                     await this.sendData(this.calculatorForIndex);
                 });
+
+                $('.calculatorForIndex-contact-form').on('click', e => {
+                    e.preventDefault();
+                    $("#modalform").modal('show');
+                });
+
 
             }
 

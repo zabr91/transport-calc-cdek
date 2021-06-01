@@ -28,7 +28,7 @@
              * @returns {Promise<Response>}
              */
             static async getTablePrice(formData) {
-                const response = await fetch('/wordpress/wp-content/plugins/transport-calc-cdek/app/Controllers/AjaxController.php', {
+                const response = await fetch('/wp-content/plugins/transport-calc-cdek/app/Controllers/AjaxController.php', {
                     method: 'POST',
                     body: formData,
                 });

@@ -130,8 +130,8 @@ class AppView {
         table.innerHTML = `${html} <tr>
                                     <td></td>
                                     <td></td>
-                                    <td><button class="btn btn-success w-100" id="calculatorForIndex-addPlace">Заключить договор</button></td>
-                                    <td><button class="btn btn-success w-100" id="calculatorForIndex-addPlace">Заключить договор</button></td>
+                                    <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
+                                    <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
                                 </tr></tbody>`
         let button = calculatorForIndex.querySelector('[type="submit"]')
         button.outerHTML = '<button type="submit" class="btn btn-success w-100">Рассчитать</button>'

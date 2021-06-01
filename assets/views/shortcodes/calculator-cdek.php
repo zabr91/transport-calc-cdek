@@ -183,8 +183,8 @@
                                 <tr>
                                     <td></td>
                                     <td></td>
-                                    <td><button class="btn btn-success w-100" id="calculatorForIndex-addPlace">Заключить договор</button></td>
-                                    <td><button class="btn btn-success w-100" id="calculatorForIndex-addPlace">Заключить договор</button></td>
+                                    <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
+                                    <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -202,6 +202,17 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg rounded">
             <div class="modal-body text-center" id="modalMessage-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalform" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg rounded">
+            <div class="modal-body text-center" id="modalMessage-body">
+                <?= do_shortcode(get_option('transportcalccdek')['fill_modal_content']) ?>
             </div>
         </div>
     </div>
