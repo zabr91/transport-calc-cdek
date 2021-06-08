@@ -19,8 +19,8 @@ jQuery(function ($) {
 
                 $('[data-toggle="tooltip"]').tooltip();
 
-                this.autocomplete('#calculatorForIndex [name=senderCity]', '#calculatorForIndex [name=senderCityId]')
-                this.autocomplete('#calculatorForIndex [name=receiverCity]', '#calculatorForIndex [name=receiverCityId]')
+                AppController.autocomplete('#calculatorForIndex [name=senderCity]', '#calculatorForIndex [name=senderCityId]')
+                AppController.autocomplete('#calculatorForIndex [name=receiverCity]', '#calculatorForIndex [name=receiverCityId]')
 
                 this.calculatorForIndexAddPlace.addEventListener('click', e => {
                     e.preventDefault();
@@ -38,7 +38,11 @@ jQuery(function ($) {
                     await this.sendData(this.calculatorForIndex);
                 });
 
-                $('.calculatorForIndex-contact-form').on('click', e => {
+                /*$('.calculatorForIndex-contact-form').on('click', e => {
+
+                });*/
+
+                $('#table').on('click', '.calculatorForIndex-contact-form', function(e){
                     e.preventDefault();
                     $("#modalform").modal('show');
                 });
@@ -51,7 +55,7 @@ jQuery(function ($) {
              * @param inputSelector
              * @param outputSelector
              */
-            autocomplete(inputSelector, outputSelector) {
+            static autocomplete(inputSelector, outputSelector) {
                 $(inputSelector).autocomplete({
                     source: (request, response) => AppModel.getListByTerm(inputSelector, response),
                     minLength: 1,
@@ -145,8 +149,7 @@ jQuery(function ($) {
 
                 const preloader = document.getElementById('preloader');
 
-
-                //   try{
+                try{
                 const senderCityId = calculatorForIndex.querySelector('[name=senderCityId]').value;
                 const receiverCityId = calculatorForIndex.querySelector('[name=receiverCityId]').value;
 
@@ -194,13 +197,13 @@ jQuery(function ($) {
                                         goods,
                                     });
                     */
-                    console.log('Start fetch');
+
                     const response = await AppModel.getTablePrice(formData);
 
                     if (response.ok) {
                         const data = await response.json();
 
-                        console.log(data);
+
 
                         const weight = this.goods.reduce((weight, item) => weight + item.weight, 0);
                         const volume = this.goods.reduce((length, item) => length + item.length, 0)
@@ -215,10 +218,10 @@ jQuery(function ($) {
                     }
                 }
 
-                /*  }
+                  }
                   catch (e) {
-                      console.log(e);
-                  }*/
+                      this.sendMessage(e.message, true);
+                  }
 
             }
 

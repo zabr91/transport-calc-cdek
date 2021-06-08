@@ -12,6 +12,8 @@ use WPMVC\Bridge;
  * @package transport-calc-cdek
  * @version 1.0.0
  */
+include_once 'Models/CDEKCalculatorV1.php';
+
 class Main extends Bridge
 {
     /**
@@ -20,6 +22,28 @@ class Main extends Bridge
     public function init()
     {
         $this->add_shortcode( 'calculator-cdek', 'view@shortcodes.calculator-cdek' );
+
+        add_action( 'wp_ajax_get_price', [&$this, 'get_price'] );
+
+    }
+
+    public function get_price()
+    {
+        $client_id = 'F948qdytzcvQtNx3LeJ8Vi5iScqyxJuS';
+        $client_secret = 'Vpy7tx3mBMNqOzfHyNRzSY044wVl5KSO';
+        $calculator = new CDEKCalculatorV1($client_id, $client_secret);
+
+
+
+        $fromLocation = isset($_POST['senderCityId']) ? $_POST['senderCityId'] : 0 ;
+        $toLocation = isset($_POST['receiverCityId']) ? $_POST['receiverCityId'] : 0;
+        $goods = isset($_POST['goods']) ? $_POST['goods'] : 0;
+        $cod_cost = isset($_POST['cod_cost']) ? $_POST['cod_cost'] : 0;
+
+        echo $calculator->getResult($fromLocation, $toLocation, $goods,  $cod_cost);
+
+        wp_die();
+
     }
 
 
@@ -63,9 +87,31 @@ class Main extends Bridge
 
         add_settings_field('cdek_api', 'CDEK API', [&$this, 'fill_cdek_api'], 'transportcalccdek-settings', 'section_id' );
 
+
+        add_settings_field('cdek_authLogin', 'Auth Login', [&$this, 'fill_auth_login'], 'transportcalccdek-settings', 'section_id' );
+
+
+        add_settings_field('cdek_secure', 'CDEK Secure', [&$this, 'fill_cdek_secure'], 'transportcalccdek-settings', 'section_id' );
+
         add_settings_field('modal_content', 'Контент модального окна', [&$this, 'fill_modal_content'], 'transportcalccdek-settings', 'section_id' );
 
 
+    }
+
+    public function fill_cdek_secure(){
+        $val = get_option('transportcalccdek');
+        $val = $val ? $val['cdek_secure'] : null;
+        ?>
+        <input type="text" name="transportcalccdek[cdek_secure]" value="<?php echo esc_attr( $val ) ?>" />
+        <?php
+    }
+
+    public function fill_auth_login(){
+        $val = get_option('transportcalccdek');
+        $val = $val ? $val['cdek_authLogin'] : null;
+        ?>
+        <input type="text" name="transportcalccdek[cdek_authLogin]" value="<?php echo esc_attr( $val ) ?>" />
+        <?php
     }
 
     public function fill_cdek_api(){
@@ -78,7 +124,7 @@ class Main extends Bridge
 
     public function fill_modal_content(){
         $val = get_option('transportcalccdek');
-        $val = $val ? $val['fill_modal_content'] : null;
+        $val = $val ? $val['modal_content'] : null;
         ?>
         <textarea rows="10" cols="45"  name="transportcalccdek[modal_content]"/>
         <?php echo esc_attr( $val ) ?>

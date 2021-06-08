@@ -9,17 +9,17 @@ include_once 'CDEKAuthorization.php';
 
 class CDEKCalculator extends CDEKAuthorization
 {
-    private $baseUrl = 'https://api.cdek.ru/';
+    //private $baseUrl = 'https://api.cdek.ru/';
 
     const TYPE_INTERNET_SHOP = 1;
     const TYPE_DELIVERY = 2;
 
-    private $exitResult = [
+  /*  private $exitResult = [
         'Посылка' => null,
         'Экспресс-лайт' => null,
         'Магистральный экспресс' => null,
         'Экономичная посылка' => null
-    ];
+    ];*/
 
     /**
      * Enter client data
@@ -46,7 +46,7 @@ class CDEKCalculator extends CDEKAuthorization
      *
      * @throws Exception if access token is null
      */
-    public function getCostDeliveryByTrarrifs($fromLocation = 270, $toLocation = 44, $goods, $type = self::TYPE_INTERNET_SHOP)
+    public function getCostDeliveryByTrarrifs($fromLocation = 270, $toLocation = 44, $goods, $type = self::TYPE_DELIVERY, $cod_cost)
     {
         if(!$this->getAccessToken())
         {
@@ -93,49 +93,127 @@ class CDEKCalculator extends CDEKAuthorization
         return $result;
     }
 
-    public function getResult($fromLocation = 270, $toLocation = 44, $goods, $type = self::TYPE_INTERNET_SHOP){
+    public function getResult($fromLocation = 270, $toLocation = 44, $goods, $type = self::TYPE_DELIVERY, $cod_cost){
 
-        $jsonResult = $this->getCostDeliveryByTrarrifs($fromLocation, $toLocation, $goods,self::TYPE_INTERNET_SHOP);
+        $jsonResult = $this->getCostDeliveryByTrarrifs($fromLocation, $toLocation, $goods, $type, $cod_cost);
+
+     // return $jsonResult;
 
         $arr = json_decode($jsonResult, true);
+
+        if($cod_cost > 0){ //  * 0.075
+            $cod_cost = round($cod_cost / 133.33333333, 1);
+        }
 
         $exitResult = [
             'services' =>[
                 [
-                    'name'=> 'Посылка',
+                    'name'=> 'Супер-экспресс до 12',
+                    'pattern' => '/^Супер.экспресс.до.12/',
                     'periodMin' => 0,
                     'periodMax' => 0,
                 ],
                 [
-                    'name'=> 'Экспресс-лайт',
+                    'name'=> 'Супер-экспресс до 14',
+                    'pattern' => '/^Супер.экспресс.до.14/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+                [
+                    'name'=> 'Супер-экспресс до 16',
+                    'pattern' => '/^Супер.экспресс.до.16/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+               [
+                    'name'=> 'Супер-экспресс лайт 12',
+                    'pattern' => '/Супер.экспресс.лайт.12/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+                [
+                    'name'=> 'Супер-экспресс лайт 14',
+                    'pattern' => '/^Супер.экспресс.лайт.14/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+                [
+                    'name'=> 'Супер-экспресс лайт 18',
+                    'pattern' => '/^Супер.экспресс.лайт.18/',
                     'periodMin' => 0,
                     'periodMax' => 0,
                 ],
                 [
                     'name'=> 'Экспресс',
+                    'pattern' => '/^Экспресс.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+                [
+                    'name'=> 'Экспресс-лайт',
+                    'pattern' => '/^Экспресс.лайт.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+                [
+                    'name'=> 'Посылка',
+                    'pattern' => '/^Посылка.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
                     'periodMin' => 0,
                     'periodMax' => 0,
                 ],
                 [
                     'name'=> 'Магистральный экспресс',
+                    'pattern' => '/^Магистральный.экспресс.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
                     'periodMin' => 0,
                     'periodMax' => 0,
                 ],
                 [
-                    'name'=> 'Экономичная посылка',
+                    'name'=> 'Магистральный супер-экспресс',
+                    'pattern' => '/^Магистральный.супер-экспресс.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
                     'periodMin' => 0,
                     'periodMax' => 0,
                 ],
-                /*  'Экспресс-лайт' => null,
-                  'Магистральный экспресс' => null,
-                  'Экономичная посылка' => null*/
+                [
+                       'name'=> 'Экспресс тяжеловесы',
+                    'pattern' => '/^Экспресс.тяжеловесы.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
+                       'periodMin' => 0,
+                       'periodMax' => 0,
+                   ],
+                [
+                    'name'=> 'Экономичная посылка',
+                    'pattern' => '/^Экономичная.посылка.[дверь.дверь|склад.дверь|дверь.склад|склад.склад]/',
+                    'periodMin' => 0,
+                    'periodMax' => 0,
+                ],
+                   /*[
+                       'name'=> 'Магистральный экспресс',
+                       'periodMin' => 0,
+                       'periodMax' => 0,
+                   ],
+                   [
+                       'name'=> 'Магистральный супер-экспресс',
+                       'periodMin' => 0,
+                       'periodMax' => 0,
+                   ],
+                   [
+                       'name'=> 'Экономичная посылка',
+                       'periodMin' => 0,
+                       'periodMax' => 0,
+                   ],
+                   [
+                       'name'=> 'Магистральный супер-экспресс',
+                       'periodMin' => 0,
+                       'periodMax' => 0,
+                   ],*/
             ]
         ];
         $types =[
             '/дверь-дверь$/' => 'doorToDoor',
             '/склад-дверь$/' => 'warehouseToDoor',
             '/дверь-склад$/' => 'doorToWarehouse',
-            '/склад-склад$/' => 'warehouseToWarehouse'
+            '/склад-склад$/' => 'warehouseToWarehouse',
+            '/Супер.экспресс.до.12/' => 'doorToDoor',
+            '/Супер.экспресс.до.14/' => 'doorToDoor',
         ];
 
 
@@ -143,10 +221,10 @@ class CDEKCalculator extends CDEKAuthorization
         for ($services = 0; $services < count($exitResult['services']); $services++){
             for($tarifs = 0; $tarifs < count($arr["tariff_codes"]); $tarifs++){
 
-                $patern = '/^'.$exitResult['services'][$services]['name'].'/';
+                $pattern = $exitResult['services'][$services]['pattern'];
 
 
-                if(preg_match($patern, $arr["tariff_codes"][$tarifs]['tariff_name']) > 0)
+                if(preg_match($pattern, $arr["tariff_codes"][$tarifs]['tariff_name']) > 0)
                 {
                     //echo  $arr["tariff_codes"][$tarifs]['tariff_name'].';';
 
@@ -167,13 +245,25 @@ class CDEKCalculator extends CDEKAuthorization
 
 
                             /* Price block */
-                            $exitResult['services'][$services][$type] =
-                                ['price' =>
-                                    [
-                                        $arr["tariff_codes"][$tarifs]['delivery_sum'],
-                                        $arr["tariff_codes"][$tarifs]['delivery_sum'] * 1.05
-                                    ]
-                            ];
+                          //  try{
+                                $exitResult['services'][$services][$type] =
+                                    ['price' =>
+                                        [
+                                            $arr["tariff_codes"][$tarifs]['delivery_sum'] + $cod_cost,
+                                            round(($arr["tariff_codes"][$tarifs]['delivery_sum']  + $cod_cost),0)
+                                        ]
+                                    ];
+                          /*  }
+                            catch (Exception $e){
+                                $exitResult['services'][$services][$type] =
+                                    ['price' =>
+                                        [
+                                            $arr["tariff_codes"][$tarifs]['delivery_sum']
+                                          ,0
+                                        ]
+                                    ];
+                            }*/
+
                         }
 
                     }

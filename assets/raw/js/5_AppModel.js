@@ -28,12 +28,22 @@
              * @returns {Promise<Response>}
              */
             static async getTablePrice(formData) {
-                const response = await fetch('/wp-content/plugins/transport-calc-cdek/app/Controllers/AjaxController.php', {
+                /*const response = await fetch('/wp-content/plugins/transport-calc-cdek/app/Controllers/AjaxController.php', {
                     method: 'POST',
                     body: formData,
-                });
+                });//
 
-                return response;
+                return response;*/
+                $.ajax({
+                    url: 'https://api.cdek.ru/city/getListByTerm/jsonp.php?callback=?',
+                    method: 'POST',
+                    data: formData,
+                    success: (data) => response($.map(data.geonames, (item) => ({
+                        label: item.name,
+                        value: item.name,
+                        id: item.id
+                    })))
+                });
             }
         }
 

@@ -9,7 +9,7 @@ class CDEKAuthorization
     private $client_id;
     private $client_secret;
 
-    private $baseUrl = 'https://api.cdek.ru/';
+    public $baseUrl = 'https://api.cdek.ru/';
 
     private $grantType = "client_credentials";
 

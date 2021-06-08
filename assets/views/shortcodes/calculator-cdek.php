@@ -212,7 +212,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content shadow-lg rounded">
             <div class="modal-body text-center" id="modalMessage-body">
-                <?= do_shortcode(get_option('transportcalccdek')['fill_modal_content']) ?>
+                <?= do_shortcode(get_option('transportcalccdek')['modal_content']) ?>
             </div>
         </div>
     </div>
