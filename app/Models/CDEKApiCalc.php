@@ -1,8 +1,22 @@
 <?php
 
+namespace TransportCalcCDEK\Models;
 
-class CDEKCalculatorV1
+use WPMVC\MVC\Traits\FindTrait;
+use WPMVC\MVC\Models\PostModel as Model;
+
+/**
+ * CDEKApiCalc model.
+ * WordPress MVC model.
+ *
+ * @author Ivan Zabroda <zabr91.github.io>
+ * @package transport-calc-cdek
+ * @version 1.0.0
+ */
+class CDEKApiCalc extends Model
 {
+    use FindTrait;
+
     private $authLogin = null;
     private $secure = null;
 
@@ -210,6 +224,9 @@ class CDEKCalculatorV1
         }
     }
 
+    /**
+     * Get results form CDEK API v 1.5
+     */
     public function getResult($fromLocation = 270, $toLocation = 44, $goods, $cod_cost)
     {
         $dataNow = date('Y-m-d');
@@ -261,14 +278,8 @@ class CDEKCalculatorV1
 
                         if(preg_match($index, $tarifName) > 0)
                         {
-
-//$priceByFree
-
                             $price = [];
-
-                          /* var_dump( $priceByContract );
-
-                            return  0 ;*/
+                            $flagNoPrice = 0;
 
                             if($priceByContract["result"][$tarifs]["status"])
                             {
@@ -279,6 +290,7 @@ class CDEKCalculatorV1
                             }
                             else{
                                 $price[0] = 'X';
+                                $flagNoPrice++;
                             }
 
                             if($priceByFree["result"][$tarifs]["status"]){
@@ -286,9 +298,10 @@ class CDEKCalculatorV1
                             }
                             else{
                                 $price[1] = 'X';
+                                $flagNoPrice++;
                             }
 
-                            if($price[0] != 'X' & $price[1] != 'X'){
+                            if($flagNoPrice != 2){
                                 $this->exitResult['services'][$services][$type] =
                                     [
                                         'price' => $price
@@ -304,7 +317,6 @@ class CDEKCalculatorV1
             }
         }
 
-     //   return 0;
-       return json_encode($this->exitResult);
+        return json_encode($this->exitResult);
     }
 }

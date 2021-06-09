@@ -27,23 +27,25 @@
              * @param formData
              * @returns {Promise<Response>}
              */
-            static async getTablePrice(formData) {
-                /*const response = await fetch('/wp-content/plugins/transport-calc-cdek/app/Controllers/AjaxController.php', {
-                    method: 'POST',
-                    body: formData,
-                });//
+            static getTablePrice(formData) {
+                var response = null;
+                formData.append("action", "cdek_get_price");
 
-                return response;*/
                 $.ajax({
-                    url: 'https://api.cdek.ru/city/getListByTerm/jsonp.php?callback=?',
-                    method: 'POST',
-                    data: formData,
-                    success: (data) => response($.map(data.geonames, (item) => ({
-                        label: item.name,
-                        value: item.name,
-                        id: item.id
-                    })))
+                    url: elementorCommonConfig.ajax.url,
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    async: false,
+                    error: function( jqXHR, textStatus, errorThrown ){
+                        console.log('ОШИБКА: ' + textStatus );
+                    },
+                    data: formData
+
+                }).done(function(data) {
+                    response = data;
                 });
+                return response;
             }
-        }
+}
 

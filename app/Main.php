@@ -3,6 +3,7 @@
 namespace TransportCalcCDEK;
 
 use WPMVC\Bridge;
+use WPMVC\Response;
 /**
  * Main class.
  * Bridge between WordPress and App.
@@ -12,7 +13,6 @@ use WPMVC\Bridge;
  * @package transport-calc-cdek
  * @version 1.0.0
  */
-include_once 'Models/CDEKCalculatorV1.php';
 
 class Main extends Bridge
 {
@@ -22,30 +22,9 @@ class Main extends Bridge
     public function init()
     {
         $this->add_shortcode( 'calculator-cdek', 'view@shortcodes.calculator-cdek' );
-
-        add_action( 'wp_ajax_get_price', [&$this, 'get_price'] );
-
+        $this->add_action('wp_ajax_cdek_get_price', 'PriceController@get_price');
+        $this->add_action('wp_ajax_nopriv_cdek_get_price', 'PriceController@get_price');
     }
-
-    public function get_price()
-    {
-        $client_id = 'F948qdytzcvQtNx3LeJ8Vi5iScqyxJuS';
-        $client_secret = 'Vpy7tx3mBMNqOzfHyNRzSY044wVl5KSO';
-        $calculator = new CDEKCalculatorV1($client_id, $client_secret);
-
-
-
-        $fromLocation = isset($_POST['senderCityId']) ? $_POST['senderCityId'] : 0 ;
-        $toLocation = isset($_POST['receiverCityId']) ? $_POST['receiverCityId'] : 0;
-        $goods = isset($_POST['goods']) ? $_POST['goods'] : 0;
-        $cod_cost = isset($_POST['cod_cost']) ? $_POST['cod_cost'] : 0;
-
-        echo $calculator->getResult($fromLocation, $toLocation, $goods,  $cod_cost);
-
-        wp_die();
-
-    }
-
 
     /**
      * Declaration of admin only WordPress hooks.
@@ -79,6 +58,9 @@ class Main extends Bridge
 
     }
 
+    /**
+     * Controls on dashboard
+     */
     public function addControls(){
 
         register_setting( 'transportcalccdek', 'transportcalccdek', 'sanitize_callback' );

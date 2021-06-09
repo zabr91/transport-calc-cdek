@@ -149,7 +149,7 @@ jQuery(function ($) {
 
                 const preloader = document.getElementById('preloader');
 
-                try{
+               // try{
                 const senderCityId = calculatorForIndex.querySelector('[name=senderCityId]').value;
                 const receiverCityId = calculatorForIndex.querySelector('[name=receiverCityId]').value;
 
@@ -198,10 +198,12 @@ jQuery(function ($) {
                                     });
                     */
 
-                    const response = await AppModel.getTablePrice(formData);
+                    const response = AppModel.getTablePrice(formData);
 
-                    if (response.ok) {
-                        const data = await response.json();
+                    console.log('Response: '+response)
+
+                    if (response) {
+                        const data = JSON.parse(response);
 
 
 
@@ -218,10 +220,10 @@ jQuery(function ($) {
                     }
                 }
 
-                  }
+                /*  }
                   catch (e) {
                       this.sendMessage(e.message, true);
-                  }
+                  }*/
 
             }
 
