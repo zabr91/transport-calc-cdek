@@ -9,13 +9,25 @@ jQuery(function ($) {
         class AppController {
 
             // calculator = document.getElementById('calculator');
-            calculatorForIndex = document.getElementById('calculatorForIndex')
 
-            calculatorForIndexAddPlace = calculatorForIndex.querySelector('#calculatorForIndex-addPlace')
-            calculatorForIndexPlaces = calculatorForIndex.querySelector('#calculatorForIndex-places')
+            calculatorForIndex;
+            calculatorForIndexAddPlace;
+            calculatorForIndexPlaces;
+
             goods = [];
 
             constructor() {
+
+                this.calculatorForIndex = document.getElementById('calculatorForIndex')
+
+                if(!this.calculatorForIndex)
+                {
+                    return 0;
+                }
+
+
+                this.calculatorForIndexAddPlace = calculatorForIndex.querySelector('#calculatorForIndex-addPlace')
+                this.calculatorForIndexPlaces = calculatorForIndex.querySelector('#calculatorForIndex-places')
 
                 $('[data-toggle="tooltip"]').tooltip();
 
@@ -204,8 +216,6 @@ jQuery(function ($) {
 
                     if (response) {
                         const data = JSON.parse(response);
-
-
 
                         const weight = this.goods.reduce((weight, item) => weight + item.weight, 0);
                         const volume = this.goods.reduce((length, item) => length + item.length, 0)

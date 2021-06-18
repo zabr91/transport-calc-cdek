@@ -78,116 +78,154 @@
                 <div class="col-12 col-lg-8">
                     <div class="shadow-lg rounded">
                         <div class="table-responsive-lg overflow-auto">
-                            <table class="table table-striped" id="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col" colspan="2" class="align-middle table__th table__th_first"><small>Москва &rarr; Санкт-Петербург, 3 кг, 0.003 м<sup>3</sup>, объемный вес: 0.6 кг</small></th>
+
+                            <div class="table table-striped" id="table">
+
+                                <div class="thead">
+                                <div class="row">
+                                    <div class="col-md-4 align-middle table__th table__th_first"><small>Москва &rarr; Санкт-Петербург, 3 кг, 0.003 м<sup>3</sup>, объемный вес: 0.6 кг</small></div>
                                     <!--  <th scope="col" class="align-middle bg-success text-white text-center table__th" data-toggle="tooltip" data-placement="bottom" title="СДЭК предлагает комплекс услуг для компаний, осуществляющих дистанционную торговлю, включающий в себя доставку со склада организации до конечного потребителя и прием денежных средств за товар от имени и по поручению компании, занимающейся дистанционной торговлей.">С договором интернет-магазина</th> -->
-                                    <th scope="col" class="align-middle bg-success bg-success_transparent text-center table__th" data-toggle="tooltip" data-placement="bottom" title="После заключения договора у Вас появиться «Личный Кабинет» на сайте СДЭК. В нем вы сможете создавать, отслеживать, проверять, запрашивать и формировать накладные, счета, акты, реестры и многое другое в режиме online.">С обычным договором</th>
-                                    <th scope="col" class="align-middle text-center table__th table__th_last">Обычная отправка</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col" class="align-middle text-uppercase font-weight-normal">Услуга</th>
-                                    <th scope="col" class="align-middle text-uppercase font-weight-normal">Режим</th>
-                                    <th scope="col" colspan="1" class="align-middle text-center text-uppercase font-weight-normal">Стоимость</th>
-                                    <th scope="col" colspan="2"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row" rowspan="4" class="bg-white" data-toggle="tooltip" data-placement="right" title="Одна из самых популярных услуг СДЭК для Интернет-Магазинов (при наличии договора с нашей компанией).">
+                                    <div class="col-md-4 align-middle bg-success bg-success_transparent text-center table__th" data-toggle="tooltip" data-placement="bottom" title="После заключения договора у Вас появиться «Личный Кабинет» на сайте СДЭК. В нем вы сможете создавать, отслеживать, проверять, запрашивать и формировать накладные, счета, акты, реестры и многое другое в режиме online.">С обычным договором</div>
+                                    <div class="col-md-4 align-middle text-center table__th table__th_last">Обычная отправка</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 align-middle text-uppercase font-weight-normal">Услуга</div>
+                                    <div class="col-md-3 align-middle text-uppercase font-weight-normal">Режим</div>
+                                    <div class="col-md-6 align-middle text-center text-uppercase font-weight-normal">Стоимость</div>
+
+                                </div>
+                                </div>
+
+                                <div class= "tbody">
+
+                                    <!-- item -->
+                                <div class="row">
+                                    <div class="col-md-3 bg-white" data-toggle="tooltip" data-placement="right" title="Одна из самых популярных услуг СДЭК для Интернет-Магазинов (при наличии договора с нашей компанией).">
                                         <div>Посылка</div>
                                         <div class="text-success">1-2 дня</div>
-                                    </th>
-                                    <td class="align-middle">
-                                        <nobr>дверь &rarr; дверь</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">450 &#8381;</td>
-                                    <td class="text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">
-                                        <nobr>склад &rarr; дверь</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">310 &#8381;</td>
-                                    <td class="text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">
-                                        <nobr>дверь &rarr; склад</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">310 &#8381;</td>
-                                    <td class="text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">
-                                        <nobr>склад &rarr; склад</nobr>
-                                    </td>
-                                    <td class="text-center text-success font-weight-bold align-middle">170 &#8381;</td>
-                                    <td class="text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" rowspan="4" class="bg-white" data-toggle="tooltip" data-placement="right" title="Доставка легких грузов по России.">
+                                    </div>
+
+                                    <div class="col-md-9">
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle"><nobr>дверь &rarr; дверь</nobr></div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">450 &#8381;</div>
+                                            <div class="col-md-4 text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle">
+                                                <nobr>склад &rarr; дверь</nobr>
+                                            </div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">310 &#8381;</div>
+                                            <div class="col-md-4 text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle">
+                                                <nobr>дверь &rarr; склад</nobr>
+                                            </div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">310 &#8381;</div>
+                                            <div class="col-md-4 text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle">
+                                                <nobr>склад &rarr; склад</nobr>
+                                            </div>
+                                            <div class="col-md-4 text-center text-success font-weight-bold align-middle">170 &#8381;</div>
+                                            <div class="col-md-4 text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                    <!-- item -->
+
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-3 bg-white" data-toggle="tooltip" data-placement="right" title="Доставка легких грузов по России.">
                                         <div>Экспресс-лайт</div>
                                         <div class="text-success">1-2 дня</div>
-                                    </th>
-                                    <td class="align-middle">
-                                        <nobr>дверь &rarr; дверь</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">703 &#8381;</td>
-                                    <td class="text-center font-weight-bold align-middle">703 &#8381;</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">
-                                        <nobr>склад &rarr; дверь</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">617.5 &#8381;</td>
-                                    <td class="text-center font-weight-bold align-middle">617.5 &#8381;</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">
-                                        <nobr>дверь &rarr; склад</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">617.5 &#8381;</td>
-                                    <td class="text-center font-weight-bold align-middle">617.5 &#8381;</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">
-                                        <nobr>склад &rarr; склад</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">541.5 &#8381;</td>
-                                    <td class="text-center font-weight-bold align-middle">541.5 &#8381;</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="bg-white" data-toggle="tooltip" data-placement="right" title="Экономичная доставка больших грузов по России.">
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle"><nobr>дверь &rarr; дверь</nobr></div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">703 &#8381;</div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">703 &#8381;</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle"><nobr>склад &rarr; дверь</nobr></div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">617.5 &#8381;</div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">617.5 &#8381;</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle"><nobr>дверь &rarr; склад</nobr></div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">617.5 &#8381;</div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">617.5 &#8381;</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle">
+                                                <nobr>склад &rarr; склад</nobr>
+                                            </div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">541.5 &#8381;</div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">541.5 &#8381;</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-3 bg-white" data-toggle="tooltip" data-placement="right" title="Экономичная доставка больших грузов по России.">
                                         <div>Магистральный экспресс</div>
                                         <div class="text-success">2 дня</div>
-                                    </th>
-                                    <td class="align-middle">
-                                        <nobr>склад &rarr; склад</nobr>
-                                    </td>
-                                    <td class="text-center font-weight-bold align-middle">598.5 &#8381;</td>
-                                    <td class="text-center font-weight-bold align-middle">598.5 &#8381;</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="bg-white" data-toggle="tooltip" data-placement="right" title="Недорогая наземная доставка для Интернет-Магазинов (при наличии договора с нашей компанией).">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle"><nobr>склад &rarr; склад</nobr></div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">598.5 &#8381;</div>
+                                            <div class="col-md-4 text-center font-weight-bold align-middle">598.5 &#8381;</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-3 bg-white" data-toggle="tooltip" data-placement="right" title="Недорогая наземная доставка для Интернет-Магазинов (при наличии договора с нашей компанией).">
                                         <div>Экономичная посылка</div>
                                         <div class="text-success">5 дней</div>
-                                    </th>
-                                    <td class="align-middle">
-                                        <nobr>склад &rarr; склад</nobr>
-                                    </td>
-                                    <td class="text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></td>
-                                    <td class="text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></td>
-                                </tr>
-                                <tr>
+                                    </div>
+                                    <div class="col-md-9">
+
+                                        <div class="row">
+                                            <div class="col-md-4 align-middle"><nobr>склад &rarr; склад</nobr></div>
+                                            <div class="col-md-4 text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></div>
+                                            <div class="col-md-4 text-center align-middle"><img src="<?= assets_url('img/tables/no.svg', __FILE__) ?>" alt="" width="20"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <td></td>
                                     <td></td>
                                     <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
                                     <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                </div>
+                                </classtbody>
+                            </div>
                         </div>
 
                     </div>
