@@ -218,14 +218,17 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
-                                    <td><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></td>
-                                </div>
-                                </classtbody>
-                            </div>
+
+                                </div><!-- end tbody -->
+                                
+<div class="row">
+                                    
+                                    <div class="col-6"><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></div>
+                                    <div class="col-6"><button class="btn btn-success w-100 calculatorForIndex-contact-form">Заключить договор</button></div>
+                                </div><!-- end btn -->
+                                
+                                
+                         </div>
                         </div>
 
                     </div>
